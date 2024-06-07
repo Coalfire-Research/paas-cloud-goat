@@ -1,0 +1,53 @@
+<apex:page controller="SOQLInjection2">
+    <apex:include pageName="Header" />
+    <apex:pageBlock >
+        <apex:pageBlockSection columns="2">
+            <apex:pageBlockSectionItem >
+                <apex:outputPanel >
+                    <apex:form >
+                        <apex:selectRadio value="{!queryType}" required="true" layout="pageDirection">
+                            <apex:selectOptions value="{!queries}" />
+                        </apex:selectRadio>
+                        <br />
+                        <apex:commandButton action="{!querySOQL}" value="Submit" />
+                    </apex:form>
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+
+            <apex:pageBlockSectionItem >
+                <apex:outputPanel >
+                    <p>
+                        In the previous example (
+                        <apex:outputLink value="/lightning/n/SOQLInjection1">
+                            <apex:outputText value="SOQL Injection - Variant 1" /></apex:outputLink>) you saw a configuration that had "with sharing" and "AccessLevel.USER_MODE."
+                        On this page you will see the effect when "without sharing" (a common default) is used in an Apex class that uses Apex basic SOQL query syntax.
+                    </p>
+
+                    <p>
+                        The queries use Apex SOQL query syntax. Selecting an option toggles between two pre-defined queries for this demo.
+                    </p>
+                    <ul>
+                        <li>What do you observe about the permissions your user has?</li>
+                        <li>What happens if you login as a Standard User versus a System Administrator?</li>
+                        <li>What data can you still not access?</li>
+                        <li>What other data can you now access?</li>
+                    </ul>
+
+                    <p>
+                        If you have not already, try creating a new contact not associated with any account using a different user. Can another user
+                        view that data with a malicious query?
+                    </p>
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+
+        </apex:pageBlockSection>
+
+        <hr />
+
+        <h2>Resulting Output</h2>
+
+        <p>
+            <pre><apex:outputText >{!result}</apex:outputText></pre>
+        </p>
+    </apex:pageBlock>
+</apex:page>

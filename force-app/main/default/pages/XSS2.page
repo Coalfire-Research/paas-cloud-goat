@@ -1,0 +1,70 @@
+<apex:page >
+    <apex:includeScript value="{!$Resource.jquery_3_7_1_js}" />
+    <script>
+        $(document).ready(function () {
+            $("#hintheader").click(function () {
+                $("#hint").toggle();
+            });
+
+            $("#bighintheader").click(function () {
+                $("#bighint").toggle();
+            });
+        });
+    </script>
+
+    <apex:include pageName="Header" />
+    <apex:pageBlock id="block1">
+        <apex:pageBlockSection columns="2">
+            <apex:pageBlockSectionItem >
+                <apex:outputPanel >
+                    Your URL hash search term is: <div id="searchTerm" style="font-weight: bold;">
+                    <script>
+                        $( document ).ready(function() {
+                            console.log( 'hash changed to ' + window.location.hash );
+                            var decoded_text = decodeURI(window.location.hash);
+                            eval('$("#searchTerm")[0].innerText = "' + decoded_text + '";');
+                        } );
+                        $( window ).on( 'hashchange', function( event ) {
+                            console.log( 'hash changed to ' + window.location.hash );
+                            var decoded_text = decodeURI(window.location.hash);
+                            eval('$("#searchTerm")[0].innerText = "' + decoded_text + '";');
+                        } );
+                    </script>
+
+                    </div>
+                    <!-- Was told to comment-out this code because of some annoying security audit finding -->
+                    <!--[if IE 1337]>
+                        <script>var userparam = '{!$CurrentPage.parameters.userparam}';</script>
+
+                        // Not sure why my debugmode code is not working as expected
+                        <apex:outputText escape="false" value="{!$CurrentPage.parameters.debugmode}" />
+                    <![endif]-->
+                    <!-- TOFIX: Setup controller to accept JS AJAX parameters with apexpages.currentpage().getparameters().get('userparam')
+                                Remove the older references to system.currentpagereference()
+                    -->
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+
+            <apex:pageBlockSectionItem >
+                <apex:outputPanel >
+                    <p>
+                        This example demos both DOM based XSS and reflective XSS. Note that the use of reflective or DOM XSS typically requires that
+                        your target victim is logged into the application.
+                    </p>
+
+                    <h3 id="hintheader">Hint</h3>
+                    <div id="hint" style="display: none;">
+                        <apex:outputLink value="https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/pages_security_tips_xss.htm">Cross Site Scripting (XSS) in Apex Developer Guide</apex:outputLink> has some helpful knowledge material.
+                        <p>You may be viewing this page as a Lightning tab, but Apex pages have a separate URL structure for calls made via JavaScript/AJAX as well. Try /apex/PAGENAMEHERE?debugmode=EVILPAYLOADHERE</p>
+                    </div>
+                    <br />
+                    <h3 id="bighintheader">Big Hint</h3>
+                    <div id="bighint" style="display: none;">
+                        <p>Add to the /apex/ URL a hashtag with some malicious fragment identifier values.</p>
+                        <p>The HTML comments have some hints of query parameter names you might find helpful.</p>
+                    </div>
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:page>

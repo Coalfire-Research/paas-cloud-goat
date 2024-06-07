@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StaticResource xmlns="http://soap.sforce.com/2006/04/metadata">
+    <cacheControl>Private</cacheControl>
+    <contentType>text/html</contentType>
+    <description>Another open source video player library that was underfunded and run by one person in their &quot;free&quot; time</description>
+</StaticResource>

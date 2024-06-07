@@ -1,0 +1,14 @@
+This page does not have a vulnerability as the user can only access things for which they already have permission.
+
+Select id,name from Contact
+
+Concept: Whether you use GUI pages or even have complete control over the query when leveraging the platform's security features data is secured.
+
+
+Do notice that you can guess and enumerate valid object field names (columns):
+
+SELECT name FROM Building__c
+
+versus the error from:
+
+SELECT address FROM Building__c

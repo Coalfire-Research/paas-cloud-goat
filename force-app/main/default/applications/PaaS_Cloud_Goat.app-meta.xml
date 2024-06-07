@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Secret_Sauces</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>SecretSauce__c</pageOrSobjectType>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Secret_Sauces</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>SecretSauce__c</pageOrSobjectType>
+    </actionOverrides>
+    <brand>
+        <headerColor>#B2B9BE</headerColor>
+        <logo>A_hacker_goat_in_the_cloud_Copilot</logo>
+        <logoVersion>1</logoVersion>
+        <shouldOverrideOrgTheme>false</shouldOverrideOrgTheme>
+    </brand>
+    <description>rodneybeede.com</description>
+    <formFactors>Small</formFactors>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <label>PaaS Cloud Goat</label>
+    <navType>Standard</navType>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BuildingsPage</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Building__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>BuildingsPage</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Building__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <setupExperience>all</setupExperience>
+    <tabs>standard-Contact</tabs>
+    <tabs>standard-File</tabs>
+    <tabs>Building__c</tabs>
+    <tabs>SecretSauce__c</tabs>
+    <tabs>WelcomeLab</tabs>
+    <uiType>Lightning</uiType>
+    <utilityBar>PaaS_Cloud_Goat_UtilityBar</utilityBar>
+</CustomApplication>

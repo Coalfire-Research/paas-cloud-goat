@@ -1,0 +1,14 @@
+HQ%
+
+    j_id0%3Ablock1%3Aj_id37%3Aj_id38%3Aj_id40%3Aj_id43=HQ%25
+
+# change table to
+Building__c
+
+    &j_id0%3Ablock1%3Aj_id37%3Aj_id38%3Aj_id40%3Aj_id44=Building__c
+
+easymode=true
+
+
+Note that there is no SOQL "comment" command so we cannot easily dispense with the WHERE Name LIKE ... part
+

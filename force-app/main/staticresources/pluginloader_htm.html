@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">
+            const params = new URL(document.location.href).searchParams;
+            const redirectURL = params.get("redir");
+
+            setTimeout(function() {
+                window.location = redirectURL;
+            }, 5 * 60 * 1000);
+        </script>
+    </head>
+    <body>
+        Redirecting to platform video player...<br />
+        <a href="#" id="redirect_link">Click here to redirect now</a>
+        <script type="text/javascript">
+            document.getElementById("redirect_link").href = redirectURL;
+        </script>
+    </body>
+</html>

@@ -1,0 +1,13 @@
+# Two different examples, both log into the web browser dev console (F12)
+# Install these into a Contact's "Title"
+
+Observe that the Salesforce built-in table has anti-xss filtering built-in.
+Whether in the explicit form of:    <apex:outputText escape="true"
+or using {!variable} you get protection.
+
+However, escape="false" can turn-off this protection.
+
+
+<img onerror=console.log('xss') src=b/>
+
+"); console.log("level 2 XSS"); //comment-out_

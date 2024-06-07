@@ -1,0 +1,60 @@
+<apex:page controller="SOSL2">
+    <apex:includeScript value="{!$Resource.jquery_3_7_1_js}" />
+    <script>
+        $(document).ready(function () {
+            $("#hintheader").click(function () {
+                $("#hint").toggle();
+            });
+
+            $("#bighintheader").click(function () {
+                $("#bighint").toggle();
+            });
+        });
+    </script>
+
+    <apex:include pageName="Header" />
+    <apex:pageBlock id="block1">
+        <apex:pageBlockSection columns="2">
+            <apex:pageBlockSectionItem >
+                <apex:outputPanel >
+                    <apex:form >
+                        <apex:outputLabel >Search Annuals:</apex:outputLabel>
+                        <apex:inputText value="{!searchTerm}" />
+                        <apex:inputHidden value="{!searchFilter}" />
+                        <br />
+                        <apex:commandButton action="{!querySOSL}" value="Submit" />
+
+                        <apex:inputHidden id="easymode" value="{!easymode}" />
+                    </apex:form>
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+
+            <apex:pageBlockSectionItem >
+                <apex:outputPanel >
+                    <p>
+                        Can you use SOSL injection to steal the building entry pin?
+                    </p>
+
+                    <h3 id="hintheader">Hint</h3>
+                    <div id="hint" style="display: none;">
+                        You need to combine two injection points together.
+                    </div>
+                    <br />
+                    <h3 id="bighintheader">Big Hint</h3>
+                    <div id="bighint" style="display: none;">
+                        <p>Try finding the Building__c.EntryPIN digit by digit in your query. Note that escapeSingleQuotes is in-play, but you do not need ' to get the data.</p>
+                        <p>There is an "easymode" parameter you can enable, but it is not required to solve.</p>
+                    </div>
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+
+        <apex:pageBlockSection rendered="{!len(result)>0}">
+            <hr />
+            <h2>Search Result</h2>
+            <p>
+                <pre>{!result}</pre>
+            </p>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:page>

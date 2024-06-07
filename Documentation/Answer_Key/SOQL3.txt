@@ -1,0 +1,8 @@
+Select id,name from Contact
+
+Observe that the "PRIVATE" contact is still not listed due to the "with sharing" restriction.
+
+However, custom object like Building received the default configuration for sharing. The system mode made the difference.
+
+Notice also in code review the alternative ways to specify the authorization permission mode:
+    .isAccessible(), .isUpdateable(), .isCreateable(), .isDeletable()

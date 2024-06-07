@@ -1,0 +1,92 @@
+<apex:page >
+
+<apex:include pageName="Header" />
+
+<h1 style="font-size: 2em">Welcome to the Lab for PaaS Cloud Goat</h1>
+
+<p>
+The home of this project is at&nbsp;<apex:outputLink value="https://github.com/" target="_blank">TBD</apex:outputLink>. If you are seeing this page then you have successfully installed the custom Salesforce app into your environment.
+</p>
+
+<p>
+<b>⚠️🚨⚠️ WARNING:</b> This application is not secure and intentionally has security vulnerabilities in it. Any Salesforce org, sandbox, or environment data could be exposed.
+</p>
+
+<p>
+Licensed under GNU AFFERO GENERAL PUBLIC LICENSE<br />
+Version 3, 19 November 2007<br />
+<br />
+PaaS Cloud Goat is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.<br />
+<br />
+PaaS Cloud Goat is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.<br />
+<br />
+You should have received a copy of the GNU Affero General Public License along with PaaS Cloud Goat. If not, see &lt;<apex:outputLink value="https://www.gnu.org/licenses/">https://www.gnu.org/licenses/</apex:outputLink>&gt;.<br />
+</p>
+<p>
+© 2024 Rodney Beede
+</p>
+
+<hr />
+
+<apex:pageBlock >
+    <table>
+        <tr>
+            <th>Vulnerability Page</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><apex:outputLink value="/lightning/n/SOQLInjection1"><apex:outputText value="SOQL Injection - Variant 1" /></apex:outputLink></td>
+            <td><apex:outputText value="Attempting injection of Salesforce Object Query Language 'with sharing' and USER_MODE" /></td>
+        </tr>
+        <tr>
+            <td><apex:outputLink value="/lightning/n/SOQLInjection2"><apex:outputText value="SOQL Injection - Variant 2" /></apex:outputLink></td>
+            <td><apex:outputText value="Attempting injection of Salesforce Object Query Language 'without sharing'" /></td>
+        </tr>
+        <tr>
+            <td><apex:outputLink value="/lightning/n/SOQLInjection3"><apex:outputText value="SOQL Injection - Variant 3" /></apex:outputLink></td>
+            <td><apex:outputText value="Attempting injection of Salesforce Object Query Language 'with sharing' and SYSTEM_MODE" /></td>
+        </tr>
+        <tr>
+            <td><apex:outputLink value="/lightning/n/SOQLInjection4"><apex:outputText value="SOQL Injection - Variant 4" /></apex:outputLink></td>
+            <td><apex:outputText value="Attempting injection against a parameter" /></td>
+        </tr>
+        <tr>
+            <td><apex:outputLink value="/lightning/n/SOQLInjection5"><apex:outputText value="SOQL Injection - Variant 5" /></apex:outputLink></td>
+            <td><apex:outputText value="Attempting injection against a different part of the query" /></td>
+        </tr>
+        <tr>
+            <td><apex:outputLink value="/lightning/n/XSS1"><apex:outputText value="XSS - Variant 1" /></apex:outputLink></td>
+            <td><apex:outputText value="Persistent XSS" /></td>
+        </tr>
+        <tr>
+            <td><apex:outputLink value="/lightning/n/XSS2" target="_blank"><apex:outputText value="XSS - Variant 2" /></apex:outputLink></td>
+            <td><apex:outputText value="DOM and Reflective XSS" /></td>
+        </tr>
+        <tr>
+            <td><apex:outputLink value="/lightning/n/XSS3"><apex:outputText value="XSS - Variant 3" /></apex:outputLink></td>
+            <td><apex:outputText value="Static Resource XSS" /></td>
+        </tr>
+        <tr>
+            <td><apex:outputLink value="/lightning/n/OpenRedirect"><apex:outputText value="Open Redirect" /></apex:outputLink></td>
+            <td><apex:outputText value="Abusing your Salesforce app trusted domain name for phishing" /></td>
+        </tr>
+        <tr>
+            <td><apex:outputLink value="/lightning/n/SOSL1"><apex:outputText value="Salesforce Object Search Language - Variant 1" /></apex:outputLink></td>
+            <td><apex:outputText value="SOSL injection similar to SOQL" /></td>
+        </tr>
+        <tr>
+            <td><apex:outputLink value="/lightning/n/SOSL2"><apex:outputText value="Salesforce Object Search Language - Variant 2" /></apex:outputLink></td>
+            <td><apex:outputText value="SOSL injection used to steal restricted data" /></td>
+        </tr>
+        <tr>
+            <td><apex:outputLink value="/lightning/n/CSRF1"><apex:outputText value="Cross-site Request Forgery - Variant 1" /></apex:outputLink></td>
+            <td><apex:outputText value="CSRF" /></td>
+        </tr>
+        <tr>
+            <td><apex:outputLink value="/lightning/n/EncryptedField1"><apex:outputText value="Encrypted Field - Variant 1" /></apex:outputLink></td>
+            <td><apex:outputText value="How encrypted fields must be securely managed" /></td>
+        </tr>
+    </table>
+</apex:pageBlock>
+
+</apex:page>

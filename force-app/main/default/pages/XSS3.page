@@ -1,0 +1,55 @@
+<apex:page >
+    <apex:includeScript value="{!$Resource.jquery_3_7_1_js}" />
+    <apex:stylesheet value="{!$Resource.geocities_css}" />
+    <script>
+        $(document).ready(function () {
+            $("#hintheader").click(function () {
+                $("#hint").toggle();
+            });
+
+            $("#bighintheader").click(function () {
+                $("#bighint").toggle();
+            });
+        });
+    </script>
+
+    <apex:include pageName="Header" />
+    <apex:pageBlock id="block1">
+        <apex:pageBlockSection columns="2">
+            <apex:pageBlockSectionItem >
+                <apex:outputPanel >
+                <p>
+                Applications can also come with static resources that are outdated and have vulnerabilities. Example: Back when Flash was a common web browser plug-in custom applications would have third-party dependencies on Flash swf with known public XSS vulnerabilities. This could allow an attacker to perform XSS against the domain of the custom application.
+                </p>
+                <p>
+                The static resources can be loaded from public CDNs or a local static folder in the application itself. The local static resources could be marked private (cached for current user session) or public (caching for all users). Methods of finding these resources and their versions:
+                </p>
+                <ul>
+                    <li>Review requests for css or js resources. Note that resource naming in Salesforce may not have the .js extension so review the Content-Type for hints</li>
+                    <li>Look for &lt;script src= tags in the page HTML</li>
+                    <li>While commonly minified, external JavaScript code typically has a version number embedded into it</li>
+                    <li>Tools like Burp Suite may also automatically audit and flag known outdated common libraries</li>
+                    <li>For Salesforce custom apps look for <code>/resource/</code> in the request URL</li>
+                </ul>
+
+                <apex:image value="{!$Resource.logo_svg}" style="visibility: hidden;" />
+
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+
+            <apex:pageBlockSectionItem >
+                <apex:outputPanel >
+                    <h3 id="hintheader">Hint</h3>
+                    <div id="hint" style="display: none;">
+                        Resources typically do not have a .js or other extension due to Salesforce resouce name syntax restrictions. Look for resources loaded onto the page.
+                    </div>
+                    <br />
+                    <h3 id="bighintheader">Big Hint</h3>
+                    <div id="bighint" style="display: none;">
+                        Javascript does not have to exist just in .js files. It can also be in .css or .svg too.
+                    </div>
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:page>

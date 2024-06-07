@@ -1,0 +1,17 @@
+# List files or directories below to ignore them when running force:source:push, force:source:pull, and force:source:status
+# More information: https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_exclude_source.htm
+#
+
+# https://salesforce.stackexchange.com/questions/366564/deployment-error-the-appmenu-called-appswitcher-is-standard-and-cannot-be-de
+**/appMenus/**
+**/appSwitcher/**
+
+
+package.xml
+
+# LWC configuration files
+**/jsconfig.json
+**/.eslintrc.json
+
+# LWC Jest
+**/__tests__/**

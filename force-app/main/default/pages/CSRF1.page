@@ -1,0 +1,53 @@
+<apex:page controller="CSRF1" 
+    action="{!init}"><!-- Notice that a grep looking for apex:page and action= would be more difficult since attributes can span across multiple lines -->
+    <apex:includeScript value="{!$Resource.jquery_3_7_1_js}" />
+    <script>
+        $(document).ready(function () {
+            $("#hintheader").click(function () {
+                $("#hint").toggle();
+            });
+
+            $("#bighintheader").click(function () {
+                $("#bighint").toggle();
+            });
+        });
+    </script>
+
+    <apex:include pageName="Header" />
+    <apex:pageBlock id="block1">
+        <apex:pageBlockSection columns="2">
+            <apex:pageBlockSectionItem >
+                <apex:outputPanel >
+                    This page should be accessed using its&nbsp;<apex:outputLink value="{!$Page.CSRF1}?id={!firstContactID}">APEX page URL reference</apex:outputLink><br />
+                    <apex:outputText rendered="{!(!ISBLANK($CurrentPage.parameters.id))}">
+                        You supplied object ID of&nbsp;<apex:outputText value="{!$CurrentPage.parameters.id}" /><br />
+                    </apex:outputText>
+                    <apex:outputText style="display: {!if((!ISBLANK($CurrentPage.parameters.newname)), 'block', 'none')}" value="You supplied new name of {!$CurrentPage.parameters.newname}" />
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+
+            <apex:pageBlockSectionItem >
+                <apex:outputPanel >
+                    <p>
+                        Useful Cross-site Request Forgery references:
+                    </p>
+                    <ul>
+                        <li><apex:outputLink value="https://help.salesforce.com/s/articleView?id=000387060&type=1">CSRF Protection Settings</apex:outputLink> - Salesforce CSRF protection settings</li>
+                        <li><apex:outputLink value="https://trailhead.salesforce.com/content/learn/modules/secure-serverside-development/mitigate-crosssite-request-forgery?trail_id=security_developer">Mitigate Cross-Site Request Forgery</apex:outputLink> - Salesforce.com</li>
+                        <li><apex:outputLink value="https://developer.salesforce.com/docs/atlas.en-us.pages.meta/pages/pages_security_tips_csrf.htm">Cross-Site Request Forgery (CSRF)</apex:outputLink> - developer.salesforce.com</li>
+                    </ul>
+
+                    <h3 id="hintheader">Hint</h3>
+                    <div id="hint" style="display: none;">
+                        You should create a separate HTML page with a linking iframe to your target CSRF action. Use of a local file:// can work to save you needing another web host.
+                    </div>
+                    <br />
+                    <h3 id="bighintheader">Big Hint</h3>
+                    <div id="bighint" style="display: none;">
+                        id and newname are the parameters to attack.
+                    </div>
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:page>

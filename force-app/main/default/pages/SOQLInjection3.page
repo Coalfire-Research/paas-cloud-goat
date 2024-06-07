@@ -1,0 +1,59 @@
+<apex:page controller="SOQLInjection3">
+    <apex:include pageName="Header" />
+    <apex:pageBlock >
+        <apex:pageBlockSection columns="2">
+            <apex:pageBlockSectionItem >
+                <apex:outputPanel >
+                    <apex:form >
+                        <apex:outputLabel >SOQL Query:</apex:outputLabel>
+                        <br />
+                        <apex:inputTextarea value="{!query}" cols="120" rows="35" />
+                        <br />
+                        <apex:commandButton action="{!querySOQL}" value="Submit" />
+                    </apex:form>
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+
+            <apex:pageBlockSectionItem >
+                <apex:outputPanel >
+                    <p>
+                        This is similar to&nbsp;
+                        <apex:outputLink value="/lightning/n/SOQLInjection1">
+                            <apex:outputText value="SOQL Injection - Variant 1" /></apex:outputLink>, but this time the developer has used "with sharing" and the default query
+                        AccessLevel.SYSTEM_MODE.
+                    </p>
+
+                    <p>
+                        A sample Salesforce Object Query Language statement has been provided. Feel free to try it or any other queries you want.
+                    </p>
+                    <ul>
+                        <li>What do you observe about the permissions your user has?</li>
+                        <li>What happens if you login as a Standard User versus a System Administrator?</li>
+                    </ul>
+
+                    <p>
+                        Another useful query to explore:
+                    </p>
+
+                    <p>
+                        <code>Select id,name from Contact</code>
+                    </p>
+
+                    <p>
+                        If you have not already, try creating a new contact not associated with any account using a different user. Can another user
+                        view that data with a malicious query?
+                    </p>
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+
+        </apex:pageBlockSection>
+
+        <hr />
+
+        <h2>Resulting Output</h2>
+
+        <p>
+            <pre><apex:outputText >{!result}</apex:outputText></pre>
+        </p>
+    </apex:pageBlock>
+</apex:page>

@@ -1,0 +1,73 @@
+<apex:page controller="SOSL1">
+    <apex:includeScript value="{!$Resource.jquery_3_7_1_js}" />
+    <script>
+        $(document).ready(function () {
+            $("#hintheader").click(function () {
+                $("#hint").toggle();
+            });
+
+            $("#bighintheader").click(function () {
+                $("#bighint").toggle();
+            });
+        });
+    </script>
+
+    <apex:include pageName="Header" />
+    <apex:pageBlock id="block1">
+        <apex:pageBlockSection columns="2">
+            <apex:pageBlockSectionItem >
+                <apex:outputPanel >
+                    <apex:form >
+                        <apex:outputLabel >Search:</apex:outputLabel>
+                        <apex:inputText value="{!searchTerm}" />
+                        <br />
+                        <apex:commandButton action="{!querySOSL}" value="Submit" />
+
+                        <apex:inputHidden id="easymode" value="{!easymode}" />
+                    </apex:form>
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+
+            <apex:pageBlockSectionItem >
+                <apex:outputPanel >
+                    <p>
+                        This example has an SOSL injection vulnerability that you must find. Use of a MitM HTTP proxy (e.g. Burp Suite) is helpful.
+                    </p>
+
+                    <h3 id="hintheader">Hint</h3>
+                    <div id="hint" style="display: none;">
+                        <ul>
+                            <li>
+                                <apex:outputLink value="https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_sosl.htm">Salesforce Object Search Language (SOSL)</apex:outputLink>
+                            </li>
+                            <li>
+                                <apex:outputLink value="https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_dynamic_sosl.htm">Dynamic SOSL</apex:outputLink>
+                            </li>
+                            <li>
+                                <apex:outputLink value="https://anothersalesforceblog.com/2021/07/01/regular-expression-soql-sosl/">Regular Expression to Escape SOQL/SOSL Inputs - anothersalesforceblog.com</apex:outputLink>
+                            </li>
+                            <li>
+                                <apex:outputLink value="https://www.youtube.com/watch?v=VYCy1VXmklw">Slightly SOSL'ed: Locating And Testing SOSL Injection - Nick Dunn - BSides London - February 5, 2024</apex:outputLink>
+                            </li>
+
+                            
+                        </ul>
+                    </div>
+                    <br />
+                    <h3 id="bighintheader">Big Hint</h3>
+                    <div id="bighint" style="display: none;">
+                        There is an "easymode" parameter you can enable.
+                    </div>
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+
+        <apex:pageBlockSection rendered="{!len(result)>0}">
+            <hr />
+            <h2>Search Result</h2>
+            <p>
+                <pre>{!result}</pre>
+            </p>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:page>

@@ -1,0 +1,65 @@
+<apex:page >
+    <apex:includeScript value="{!$Resource.jquery_3_7_1_js}" />
+
+    <script>
+        $(document).ready(function () {
+            $("#hintheader").click(function () {
+                $("#hint").toggle();
+            });
+
+            $("#bighintheader").click(function () {
+                $("#bighint").toggle();
+            });
+        });
+    </script>
+
+    <apex:include pageName="Header" />
+    <apex:pageBlock id="block1">
+        <apex:pageBlockSection columns="2">
+            <apex:pageBlockSectionItem >
+                <apex:outputPanel >
+                <p>
+                The Apex Developer Guide from Salesforce.com comes with a number of good guidelines about secure coding. One of the topics discusses open redirect vulnerabilities:
+                <ul>
+                    <li><apex:outputLink value="https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/pages_security_tips_intro.htm">Open Redirects Through Static Resources</apex:outputLink> - Security Tips for Apex and Visualforce Development, v60.0; Accessed 2024-04-23</li>
+                </ul>
+                It includes a warning: <blockquote>Open redirects through static resources can expose users to the risk of unintended, and possibly malicious, redirects.</blockquote>
+                </p>
+
+                <p>
+                Other useful guides about open redirect risks:
+                </p>
+                <ul>
+                    <li><apex:outputLink value="https://developer.salesforce.com/docs/atlas.en-us.packagingGuide.meta/packagingGuide/secure_code_violation_open_redirects.htm">Open Redirects</apex:outputLink> - ISVforce guide</li>
+                    <li><apex:outputLink value="https://developer.salesforce.com/docs/atlas.en-us.pages.meta/pages/pages_compref_additional_page.htm">Best Practices for Static Resources</apex:outputLink> - Visualforce Developer Guide</li>
+                </ul>
+
+                <!-- The security consultant said I just had to use iframe's and nobody could hack the brand name -->
+                <apex:iframe id="videoplayerloaderframe"
+                    frameborder="false"
+                    scrolling="false"
+                    html-allow="autoplay"
+                    html-allowfullscreen=""
+                    title="Excellent company mandatory training video"
+                    src="{!$Resource.pluginloader_htm}?redir=%68%74%74%70%73%3A%2F%2F%77%77%77%2E%79%6F%75%74%75%62%65%2E%63%6F%6D%2F%65%6D%62%65%64%2F%64%51%77%34%77%39%57%67%58%63%51%3F%61%75%74%6F%70%6C%61%79%3D%31%26%6D%75%74%65%3D%31"
+                    />
+                
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+
+            <apex:pageBlockSectionItem >
+                <apex:outputPanel >
+                    <h3 id="hintheader">Hint</h3>
+                    <div id="hint" style="display: none;">
+                        You do not have to use a Lightning or Apex page URL to abuse static resources. Try loading the iframe src directly in a new tab.
+                    </div>
+                    <br />
+                    <h3 id="bighintheader">Big Hint</h3>
+                    <div id="bighint" style="display: none;">
+                        The pluginloader_htm uses a common pattern of a parameter. It is not allow-listed like it should have been.
+                    </div>
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:page>

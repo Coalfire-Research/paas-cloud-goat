@@ -1,0 +1,74 @@
+<apex:page controller="SOQLInjection1">
+    <apex:include pageName="Header" />
+    <apex:pageBlock >
+        <apex:pageBlockSection columns="2">
+            <apex:pageBlockSectionItem >
+                <apex:outputPanel >
+                    <apex:form >
+                        <apex:outputLabel >SOQL Query:</apex:outputLabel>
+                        <br />
+                        <apex:inputTextarea value="{!query}" cols="120" rows="35" />
+                        <br />
+                        <apex:commandButton action="{!querySOQL}" value="Submit" />
+                    </apex:form>
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+
+            <apex:pageBlockSectionItem >
+                <apex:outputPanel >
+                    From the document&nbsp;
+                    <apex:outputLink value="https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_classes_keywords_sharing.htm">Using the with sharing, without sharing, and inherited sharing Keywords</apex:outputLink> from Salesforce.com
+                    it states:
+                    <blockquote cite="https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_classes_keywords_sharing.htm">
+                        Use the with sharing keyword when declaring a class to enforce sharing rules of the current user. Explicitly setting this
+                        keyword ensures that Apex code runs in the current user context.
+                    </blockquote>
+                    <blockquote cite="https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_classes_keywords_sharing.htm">
+                        Apex without an explicit sharing declaration is insecure by default. We strongly recommend that you always specify a sharing
+                        declaration for a class.
+                    </blockquote>
+
+                    <p>
+                        A sample Salesforce Object Query Language statement has been provided. Feel free to try it or any other queries you want.
+                    </p>
+                    <ul>
+                        <li>What do you observe about the permissions your user has?</li>
+                        <li>What happens if you login as a Standard User versus a System Administrator?</li>
+                    </ul>
+
+                    <p>
+                        Another useful query to explore:
+                    </p>
+
+                    <p>
+                        <code>Select id,name from Contact</code>
+                    </p>
+
+                    <p>
+                        Try creating a new contact not associated with any account using a different user. Can another user view that data with a
+                        malicious query?
+                    </p>
+                    <p>
+                        Reference:&nbsp;
+                        <apex:outputLink value="https://help.salesforce.com/s/articleView?id=sf.contacts_sharing_considerations.htm">Considerations for Sharing and Accessing Contacts - Help.salesforce.com</apex:outputLink>
+                    </p>
+                    <blockquote cite="https://help.salesforce.com/s/articleView?id=sf.contacts_sharing_considerations.htm">A contact that isn't linked to an account is always private, regardless of your organization's sharing
+                        model.
+                    </blockquote>
+                    <p>
+                        See also:&nbsp;<apex:outputLink value="https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select.htm">SOQL SELECT Syntax</apex:outputLink>
+                    </p>
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+
+        </apex:pageBlockSection>
+
+        <hr />
+
+        <h2>Resulting Output</h2>
+
+        <p>
+            <pre><apex:outputText >{!result}</apex:outputText></pre>
+        </p>
+    </apex:pageBlock>
+</apex:page>

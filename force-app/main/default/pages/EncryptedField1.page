@@ -1,0 +1,85 @@
+<apex:page controller="EncryptedField1">
+    <apex:include pageName="Header" />
+    <apex:pageBlock id="block1">
+        <apex:pageBlockSection columns="2">
+            <apex:pageBlockSectionItem>
+                <!-- Idea from https://help.salesforce.com/s/articleView?id=000385686&type=1 but introduce a field vulnerability -->
+                <apex:outputPanel>
+                    <apex:pageBlockTable value="{! secretSauce }" var="item">
+                        <apex:column>
+                            <apex:facet name="header">
+                                <apex:outputPanel>
+                                    Name
+                                </apex:outputPanel>
+                            </apex:facet>
+                            <apex:outputLink value="/{!item.Id}" target="_blank">{!item.Name}</apex:outputLink>
+                        </apex:column>
+                        <apex:column value="{!item.PublicSize__c}">
+                            <apex:facet name="header">
+                                Packet Size
+                            </apex:facet>
+                        </apex:column>
+                        <apex:column>
+                            <apex:facet name="header">
+                                Ingredient (apex:outputField)
+                            </apex:facet>
+                            <apex:outputField value="{!item.SecretIngredient__c}" />
+                        </apex:column>
+                        <apex:column>
+                            <apex:facet name="header">
+                                Ingredient (apex:outputText))
+                            </apex:facet>
+                            <apex:outputText value="{!item.SecretIngredient__c}" />
+                        </apex:column>
+                    </apex:pageBlockTable>
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+
+            <apex:pageBlockSectionItem>
+                <apex:outputPanel>
+                    This page simply demostrates the difference between &lt;apex:outputText&gt; and &lt;apex:outputField&gt;.
+                    <p>
+                        <apex:outputLink value="https://developer.salesforce.com/docs/atlas.en-us.pages.meta/pages/pages_compref_outputText.htm">apex:outputText - Standard Component Reference / Visualforce Developer Guide</apex:outputLink>
+                    </p>
+                    <blockquote>
+                        Warning: Encrypted custom fields that are embedded in the &lt;apex:outputText&gt; component display in clear text. The &lt;apex:outputText&gt;
+                        component doesn&apos;t respect the View Encrypted Data permission for users. To prevent showing sensitive
+                        information to unauthorized users, use the &lt;apex:outputField&gt; tag instead.
+                    </blockquote>
+                    <h3>Change Update:</h3>
+                    <p>
+                        A change in the Salesforce API behavior makes this not apply for VisualForce pages in a standard layout or a separate /apex/
+                        window anymore
+                    </p>
+                    <p>
+                        <apex:outputLink value="https://resources.docs.salesforce.com/192/latest/en-us/sfdc/pdf/salesforce_winter15_release_notes.pdf">Preserve sObject Field Encryption in Visualforce Expressions</apex:outputLink> - Salesforce Winter
+                        ’15 Release Notes
+                    </p>
+                    <blockquote>
+                        For Visualforce pages set to API version 32.0 or later, expressions that reference encrypted sObject fields return the encrypted
+                        values instead of the decrypted (plain) values. This behavior more closely matches your expectations
+                        and reduces the risk of inadvertent exposure of sensitive data due to programmer error.
+                    </blockquote>
+                    <p>
+                        References:
+                    </p>
+                    <ul>
+                        <li>
+                            <apex:outputLink value="https://salesforce.stackexchange.com/questions/50487/encrypted-field-security-issue">Encrypted Field Security Issue - salesforce.stackexchange.com</apex:outputLink>
+                        </li>
+                        <li>
+                            <apex:outputLink value="https://trailhead.salesforce.com/trailblazer-community/feed/0D54V00007T4RthSAF">Encrypted Field is Masked in a Visualforce Page When Embedded into a Standard Layout></apex:outputLink>
+                            - trailhead.salesforce.com</li>
+                    </ul>
+                    <hr />
+                    <h3>Alternative Method</h3>
+                    <p>
+                        Go back to the&nbsp;
+                        <apex:outputLink value="/lightning/n/SOQLInjection3">
+                            <apex:outputText value="SOQL Injection - Variant 3" /></apex:outputLink> and try using the SecretSauce__c object.
+                    </p>
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:page>

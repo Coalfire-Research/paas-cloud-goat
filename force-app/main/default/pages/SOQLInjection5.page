@@ -1,0 +1,60 @@
+<apex:page controller="SOQLInjection5">
+    <apex:includeScript value="{!$Resource.jquery_3_7_1_js}" />
+    <script>
+        $(document).ready(function() {
+            $("#hintheader").click(function() {
+                $("#hint").toggle();
+            });
+
+            $("#bighintheader").click(function() {
+                $("#bighint").toggle();
+            });
+        });
+    </script>
+
+    <apex:include pageName="Header" />
+    <apex:pageBlock id="block1">
+        <apex:pageBlockSection columns="2">
+            <apex:pageBlockSectionItem >
+                <apex:outputPanel >
+                    <apex:form >
+                        <apex:outputLabel >Search for names:</apex:outputLabel>
+                        <apex:inputText value="{!searchTerm}" />
+                        <apex:inputHidden value="{!tableName}" />
+                        <br />
+                        <apex:commandButton action="{!querySOQL}" value="Submit" />
+
+                        <apex:inputHidden id="easymode" value="{!easymode}" />
+                    </apex:form>
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+
+            <apex:pageBlockSectionItem >
+                <apex:outputPanel >
+                    <p>
+                        This example has a SOQL injection vulnerability that you must find. Use of a MitM HTTP proxy (e.g. Burp Suite) is helpful.
+                    </p>
+
+                    <h3 id="hintheader">Hint</h3>
+                    <div id="hint" style="display: none;">
+                        Think about all parts of a query that could use string concatination and not just the typical spots.&nbsp;
+                        <apex:outputLink value="https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select.htm">SOQL and SOQL Reference</apex:outputLink>.
+                    </div>
+                    <br />
+                    <h3 id="bighintheader">Big Hint</h3>
+                    <div id="bighint" style="display: none;">
+                        The developer used parametezed queries for the input values but used reusable code functions relying on table names too.
+                    </div>
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+
+        <apex:pageBlockSection rendered="{!len(result)>0}">
+            <hr />
+            <h2>Search Result</h2>
+            <p>
+                <pre>{!result}</pre>
+            </p>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:page>

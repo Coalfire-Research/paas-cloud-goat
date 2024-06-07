@@ -1,0 +1,4 @@
+SELECT id,Name,PublicSize__c,SecretIngredient__c FROM SecretSauce__c 
+
+
+# Using SOQLInjection3 example

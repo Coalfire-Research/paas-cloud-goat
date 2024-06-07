@@ -1,0 +1,51 @@
+HQ   (recommend setting a 6 digit PIN for demo)
+
+
+These FAIL due to quotes
+------------------------
+
+Name LIKE '%'
+
+Name LIKE \'%\'
+
+
+THIS one will work:
+-------------------
+
+EntryPIN__c > 0
+
+
+How to determine the PIN?
+
+Suppose we know it cannot start with 0. So possible values:
+1,000 to 99,999,999
+
+How many digits are in our pin?
+
+4, 5, 6, 7, 8  ???
+
+# somewhere 7 to 8 digits?
+EntryPIN__c > 999999
+
+# somewhere 4 to 5 digits?
+EntryPIN__c < 100000
+
+# else - must be 6 digits, can double check with
+EntryPIN__c >= 100000 AND EntryPIN__c <= 999999
+
+
+# get the first digit only
+#   Rule was PIN (stored in system at least) cannot start with 0
+#   1 to 9 with 6 digits
+
+EntryPIN__c >= 100000 AND EntryPIN__c <= 199999
+
+# Repeat with EntryPIN__c >= 200000 AND EntryPIN__c <= 299999
+# etc.  EntryPIN__c >= #00000 AND EntryPIN__c <= #99999
+
+# Get the second digit
+#   0 to 9 digits possible
+#   Provide the first digit as F
+EntryPIN__c >= F#0000 AND EntryPIN__c <= F#9999
+
+# an alternative would be to binay search the entire PIN all at once which is faster

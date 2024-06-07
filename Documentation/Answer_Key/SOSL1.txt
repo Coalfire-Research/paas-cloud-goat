@@ -1,0 +1,12 @@
+Ja* or HQ or Bu*
+
+
+Code Review: You can actually escape out with something like:
+
+Ja*} IN Name Fields RETURNING Contact, 
+
+
+but you observe that crafting a request with the required closing ' to escape the extra text is complicated.
+
+
+The real vuln is the unpriv user was able to search and see Building__c objects that they do not have authorization to access.

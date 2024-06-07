@@ -1,0 +1,73 @@
+<apex:page controller="SOQLInjection4">
+    <apex:includeScript value="{!$Resource.jquery_3_7_1_js}" />
+    <script>
+        $(document).ready(function () {
+            $("#hintheader").click(function () {
+                $("#hint").toggle();
+            });
+
+            $("#bighintheader").click(function () {
+                $("#bighint").toggle();
+            });
+        });
+    </script>
+
+    <apex:include pageName="Header" />
+    <apex:pageBlock id="block1">
+        <apex:pageBlockSection columns="2">
+            <apex:pageBlockSectionItem >
+                <apex:outputPanel >
+                    <apex:pageBlockTable value="{!contacts}" var="item">
+                        <apex:column >
+                            <apex:facet name="header">Name</apex:facet>
+                            <apex:outputLink value="/{!item.Id}" target="_blank">
+                                <apex:outputText escape="true" value="{!item.Name}" /></apex:outputLink>
+                        </apex:column>
+                        <apex:column >
+                            <apex:facet name="header">Title</apex:facet>
+                            <!-- No XSS because upper <apex:> tags trigger anti-xss -->
+                            {!item.Title}
+                        </apex:column>
+                        <apex:column value="{!item.Phone}">
+                            <apex:facet name="header">Phone</apex:facet>
+                        </apex:column>
+                    </apex:pageBlockTable>
+
+                    <script>const clientSideArrayOfTitles = [];</script>
+                    <apex:repeat value="{!contacts}" var="item">
+                        <script>clientSideArrayOfTitles.push("{!item.Title}");</script><br />
+                    </apex:repeat>
+                    CSV of Titles: 
+                    <apex:repeat value="{!contacts}" var="item">
+                        <apex:outputText escape="false" value="{!item.Title}" />,
+                    </apex:repeat><br />
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+
+            <apex:pageBlockSectionItem >
+                <apex:outputPanel >
+                    <p>
+                        This example has a persistent XSS vulnerability (as well as HTML injection).
+                    </p>
+
+                    <p>
+                        <apex:outputLink value="https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/pages_security_tips_xss.htm">Cross Site Scripting (XSS) in Apex Developer Guide</apex:outputLink> has some helpful knowledge material.
+                    </p>
+
+                    <h3 id="hintheader">Hint</h3>
+                    <div id="hint" style="display: none;">
+                        What happens if you insert an HTML tag into a Contact?
+                    </div>
+                    <br />
+                    <h3 id="bighintheader">Big Hint</h3>
+                    <div id="bighint" style="display: none;">
+                        For situations where JavaScript cannot be executed (CSP, NoScript plugin, etc.) you will find HTML injection like the following
+                        to be useful:
+                        <br /> &lt;div style=&quot;height:100vh;position:absolute;top:0;background-color:green;&quot;&gt;Please
+                        provide your login by clicking here&lt;/div&gt;
+                    </div>
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:page>

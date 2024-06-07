@@ -1,0 +1,83 @@
+<apex:page controller="SOQLInjection4">
+    <apex:includeScript value="{!$Resource.jquery_3_7_1_js}" />
+    <script>
+        $(document).ready(function() {
+            $("#hintheader").click(function() {
+                $("#hint").toggle();
+            });
+
+            $("#bighintheader").click(function() {
+                $("#bighint").toggle();
+            });
+        });
+    </script>
+
+    <apex:include pageName="Header" />
+    <apex:pageBlock id="block1">
+        <apex:pageBlockSection columns="2">
+            <apex:pageBlockSectionItem >
+                <!-- Idea from https://help.salesforce.com/s/articleView?id=000385686&type=1 but we introduce an injection vuln -->
+                <apex:outputPanel >
+                    <apex:form >
+                        <apex:pageBlockTable value="{!contacts}" var="item">
+                            <apex:column >
+                                <apex:facet name="header">
+                                    <apex:outputPanel >
+                                        Name
+                                        <apex:commandLink action="{!querySOQL}" value="▲">
+                                            <apex:param value="ASC" name="column" assignTo="{!sortDirection}"></apex:param>
+                                        </apex:commandLink>
+                                        <apex:commandLink action="{!querySOQL}" value="▼">
+                                            <apex:param value="DESC" name="column" assignTo="{!sortDirection}"></apex:param>
+                                        </apex:commandLink>
+                                    </apex:outputPanel>
+                                </apex:facet>
+                                <apex:outputLink value="/{!item.Id}" target="_blank">{!item.Name}</apex:outputLink>
+                            </apex:column>
+                            <apex:column value="{!item.Title}">
+                                <apex:facet name="header">
+                                    Custom Title
+                                </apex:facet>
+                            </apex:column>
+                            <apex:column value="{!item.Phone}">
+                                <apex:facet name="header">
+                                    Custom Phone
+                                </apex:facet>
+                            </apex:column>
+                        </apex:pageBlockTable>
+
+                        <apex:inputHidden id="easymode" value="{!easymode}" />
+                    </apex:form>
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+
+            <apex:pageBlockSectionItem >
+                <apex:outputPanel >
+                    <p>
+                        This example has a SOQL injection vulnerability that you must find. Use of a MitM HTTP proxy (e.g. Burp Suite) is helpful.
+                    </p>
+
+                    <h3 id="hintheader">Hint</h3>
+                    <div id="hint" style="display: none;">
+                        Look at the sortDirection. Can you add unexpected options to it?<br />
+                        <apex:outputLink value="https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_orderby.htm">SOQL and SOQL Reference</apex:outputLink>.
+                    </div>
+                    <br />
+                    <h3 id="bighintheader">Big Hint</h3>
+                    <div id="bighint" style="display: none;">
+                        If an injection can only append after an ORDER BY then you have limited options. There is not a UNION or JOIN option in SOQL. The order of clauses is important in SOQL as found in&nbsp;<apex:outputLink value="https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select.htm">SOQL SELECT Syntax</apex:outputLink>.
+                        So while you can inject some things and get a successful query you are limited in this example. However, it should encourage you to probe in later exercises at other possible injection points since it hints that the developer made a mistake.
+                    </div>
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+
+        <apex:pageBlockSection rendered="{!len(result)>0}">
+            <hr />
+            <h2>EASY MODE RESULT</h2>
+            <p>
+                <pre>{!result}</pre>
+            </p>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:page>

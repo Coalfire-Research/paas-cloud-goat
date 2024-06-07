@@ -1,0 +1,8 @@
+<apex:page id="Header">
+    You are logged in as a user with the profile&nbsp;<apex:outputText value="{!$Profile.Name}"/> |
+    <apex:outputText value="{0, date, yyyy-MM-dd'T'HH:mm:ss'Z'}">
+        <apex:param value="{!NOW()}" />
+    </apex:outputText><br />
+    <apex:pageMessages />
+    <hr />
+</apex:page>

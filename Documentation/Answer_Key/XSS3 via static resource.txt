@@ -1,0 +1,7 @@
+https://rdbmlrodneybeedecom-dev-ed--c.develop.vf.force.com/resource/1713821014000/logo_svg?bgc=alert(%22catz%22)
+
+
+# This is not vulnerable because text/css is sent to the browser
+https://rdbmlrodneybeedecom-dev-ed--c.develop.vf.force.com/resource/1713820342000/geocities_css#alert(%22catz%22)
+# same for this variant due to CSS not accessing hash context in newer browsers
+https://rdbmlrodneybeedecom-dev-ed--c.develop.vf.force.com/apex/XSS3#alert(123);
