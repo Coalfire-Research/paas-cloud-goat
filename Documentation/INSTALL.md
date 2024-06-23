@@ -55,7 +55,7 @@ See also [Sample Test Data - Building__c.csv](Resources/Sample Test Data - Build
    - Fill-in the fields with any data you want
 1. Repeat creating a few SecretSauce objects
 
-### Low privilege user
+## Low privilege user creation
 1. Create a new Salesforce user
    - Most fields you can use any value
    - Make sure e-mail is valid
