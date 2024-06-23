@@ -13,6 +13,12 @@ It is novel because it focuses on custom applications deployed using the Salesfo
 
 See [INSTALL](Documentation/INSTALL.md)
 
+## Getting Started
+
+> [!IMPORTANT]
+> Ensure that you understand and follow the Salesforce policy for any security testing: https://www.salesforce.com/company/disclosure/
+
+After you've completed installation and setup you will want to login to the Salesforce test environment using the "Standard User" profile. You can use the Salesforce App Launcher menu to search for "PaaS Cloud Goat." You will find in the application helpful guidance and hints for working through the various lab excercises.
 
 ## License
 
