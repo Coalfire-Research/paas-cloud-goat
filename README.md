@@ -11,7 +11,7 @@ It is novel because it focuses on custom applications deployed using the Salesfo
 
 ## Installation
 
-See [INSTALL](INSTALL.md)
+See [INSTALL](Documentation/INSTALL.md)
 
 
 ## License
