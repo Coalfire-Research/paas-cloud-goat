@@ -1,3 +1,5 @@
+## Installation
+
 ### Prerequisites
 
 - [ ] Sign-up for a Salesforce Developer Edition account
