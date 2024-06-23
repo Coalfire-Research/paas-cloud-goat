@@ -5,7 +5,7 @@
 <h1 style="font-size: 2em">Welcome to the Lab for PaaS Cloud Goat</h1>
 
 <p>
-The home of this project is at&nbsp;<apex:outputLink value="https://github.com/" target="_blank">TBD</apex:outputLink>. If you are seeing this page then you have successfully installed the custom Salesforce app into your environment.
+The home of this project is at&nbsp;<apex:outputLink value="https://github.com/Coalfire-Research/paas-cloud-goat" target="_blank">https://github.com/Coalfire-Research/paas-cloud-goat</apex:outputLink>. If you are seeing this page then you have successfully installed the custom Salesforce app into your environment.
 </p>
 
 <p>

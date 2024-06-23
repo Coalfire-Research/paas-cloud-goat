@@ -1,13 +1,23 @@
-# Two different examples, both log into the web browser dev console (F12)
+# Two different examples that do the old silly alert.
+
 # Install these into a Contact's "Title"
 
+
+
+<img onerror=alert('xss') src=b/>
+
+"); alert("level 2 XSS"); //comment-out_
+
+
+
+----
+
 Observe that the Salesforce built-in table has anti-xss filtering built-in.
-Whether in the explicit form of:    <apex:outputText escape="true"
-or using {!variable} you get protection.
+(Contacts tab)
 
-However, escape="false" can turn-off this protection.
-
-
-<img onerror=console.log('xss') src=b/>
-
-"); console.log("level 2 XSS"); //comment-out_
+In source code you get built-in protection when using:
+	<apex:outputText escape="true"
+	or using
+	{!variable}
+	
+However, escape="false" can turn-off this protection in custom code.
