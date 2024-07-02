@@ -1,0 +1,48 @@
+<apex:page>
+    <apex:includeScript value="{!$Resource.jquery_3_7_1_js}" />
+    <script>
+        $(document).ready(function () {
+            $("#hintheader").click(function () {
+                $("#hint").toggle();
+            });
+
+            $("#bighintheader").click(function () {
+                $("#bighint").toggle();
+            });
+        });
+    </script>
+
+    <apex:include pageName="Header" />
+    <apex:pageBlock id="block1">
+        <apex:pageBlockSection columns="2">
+            <apex:pageBlockSectionItem >
+                <apex:outputPanel>
+                    If you are using the Standard User profile you could attempt an authorization test by attempting to manually browse to a page that should only be accessible to other users.<br />
+                    Try to access the Building__c custom object list page that is only authorized to privileged users.
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+
+            <apex:pageBlockSectionItem >
+                <apex:outputPanel>
+                    <h3 id="hintheader">Hint</h3>
+                    <div id="hint" style="display: none;">
+                        <apex:outputLink value="/lightning/o/Building__c/list"><apex:outputText value="Lightning Experience URL" /></apex:outputLink><br />
+                        <br />
+                        Classic Experience: {!URLFOR($Action.Building__c.List, $ObjectType.Building__c)} (only the part before the ? is important)
+                    </div>
+                    <br />
+                    <h3 id="bighintheader">Big Hint</h3>
+                    <div id="bighint" style="display: none;">
+                        This exercise you will observe that the correct authorization controls were enforced. You should also observe/learn how to guess a URL and based on the response (not found vs. denied) know if it exists. The URL can differ depending on the object/page/tab type:
+                        <ul>
+                            <li>Lightning Tab = /lightning/o/CustomObject__c</li>
+                            <li>Lightning Tab = /lightning/o/Contacts (built-in)</li>
+                            <li>Apex Page = /apex/GuessPageName</li>
+                            <li>Salesforce Classic Experience = /a0/l  (list page but iterate through 2-3 character possible values [a0, a1, etc.]</li>
+                        </ul>
+                    </div>
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:page>
