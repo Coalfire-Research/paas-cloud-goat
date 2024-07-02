@@ -46,6 +46,10 @@
         <layout>Building__c-Building Layout</layout>
     </layoutAssignments>
     <pageAccesses>
+        <apexPage>AuthZ</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
         <apexPage>CSRF1</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
@@ -105,6 +109,10 @@
         <apexPage>XSS3</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
+    <tabVisibilities>
+        <tab>AuthZ</tab>
+        <visibility>DefaultOff</visibility>
+    </tabVisibilities>
     <tabVisibilities>
         <tab>Building__c</tab>
         <visibility>Hidden</visibility>

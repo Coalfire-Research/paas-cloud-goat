@@ -35,6 +35,10 @@ You should have received a copy of the GNU Affero General Public License along w
             <th>Description</th>
         </tr>
         <tr>
+            <td><apex:outputLink value="/lightning/n/AuthZ"><apex:outputText value="Authorization" /></apex:outputLink></td>
+            <td><apex:outputText value="Understand a method for testing if authorization was implemented correctly" /></td>
+        </tr>
+        <tr>
             <td><apex:outputLink value="/lightning/n/SOQLInjection1"><apex:outputText value="SOQL Injection - Variant 1" /></apex:outputLink></td>
             <td><apex:outputText value="Attempting injection of Salesforce Object Query Language 'with sharing' and USER_MODE" /></td>
         </tr>
