@@ -1,4 +1,4 @@
-!!! Results will be in the web browser dev console (F12): !!!
+!!! Some results may be in the web browser dev console (F12): !!!
 
 
 /apex/XSS2?#%22;%20console.log('xssdom');//
