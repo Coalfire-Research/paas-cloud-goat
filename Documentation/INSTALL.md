@@ -39,7 +39,7 @@ Follow the web browser prompts to authorized the CLI
    - Research
    - Vault
 
-See also [Sample Test Data - Building__c.csv](Resources/Sample%20Test%20Data%20-%20Building__c.csv) if you know how to bulk import and want to save some clicks
+See also [Sample Test Data - Building__c.csv](/Resources/Sample%20Test%20Data%20-%20Building__c.csv) if you know how to bulk import and want to save some clicks
 
 ### Private contact
 1. Still logged-in as the "System Administrator" profile
