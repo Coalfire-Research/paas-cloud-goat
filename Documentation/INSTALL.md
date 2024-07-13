@@ -39,7 +39,7 @@ Follow the web browser prompts to authorized the CLI
    - Research
    - Vault
 
-See also [Sample Test Data - Building__c.csv](Resources/Sample Test Data - Building__c.csv) if you know how to bulk import and want to save some clicks
+See also [Sample Test Data - Building__c.csv](Resources/Sample%20Test%20Data%20-%20Building__c.csv) if you know how to bulk import and want to save some clicks
 
 ### Private contact
 1. Still logged-in as the "System Administrator" profile
@@ -62,6 +62,6 @@ See also [Sample Test Data - Building__c.csv](Resources/Sample Test Data - Build
      - (Plus-aliasing may help:  myname+standard.sf@example.org)
 1. User License = Salesforce
 1. Profile = Standard User
-1. Role = <None Specified>
-1. Await the e-mail and setup account credentials
+1. Role = _leave blank_
+1. Await the e-mail and setup your account credentials
    - "Welcome to Salesforce: Verify your account"
