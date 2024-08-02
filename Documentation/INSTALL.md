@@ -29,11 +29,12 @@ Follow the web browser prompts to authorized the CLI
 
 ### Building custom objects
 1. Login as the System Administrator
+   - _(the dev org account you used in the prereq's section)_
 1. Search for the “Paas Cloud Goat” app
 1. Buildings tab
 1. New
 1. Create a few buildings with a few PINs (any values you want)
-   - HQ	EntryPIN=123123
+   - HQ
    - Satellite
    - Bunker
    - Research
@@ -42,8 +43,8 @@ Follow the web browser prompts to authorized the CLI
 See also [Sample Test Data - Building__c.csv](/Resources/Sample%20Test%20Data%20-%20Building__c.csv) if you know how to bulk import and want to save some clicks
 
 ### Private contact
-1. Still logged-in as the "System Administrator" profile
-1. Contaccts tab
+1. Still logged-in as the "System Administrator" (dev org) profile
+1. Contacts tab
 1. New
    1. Fill-in the required name
    1. Do NOT associate with any "Account" field
@@ -57,9 +58,12 @@ See also [Sample Test Data - Building__c.csv](/Resources/Sample%20Test%20Data%20
 
 ## Low privilege user creation
 1. Create a new Salesforce user
-   - Most fields you can use any value
+   - _(Gear Icon in top right -> Service Setup -> Users -> Users -> New User)_
+   - For most fields you can use any value
    - Make sure e-mail is valid
      - (Plus-aliasing may help:  myname+standard.sf@example.org)
+   - Username must be in email format and unique across ALL of Salesforce
+
 1. User License = Salesforce
 1. Profile = Standard User
 1. Role = _leave blank_
