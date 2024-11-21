@@ -23,7 +23,7 @@ Follow the web browser prompts to authorized the CLI
 
 ### Deploy the App
 1. Go into the base directory for paas-cloud-goat
-1. `sfdx force:source:deploy -p force-app\main`
+1. `sf project deploy start --ignore-conflicts --wait 10`
 
 ## Test Data Setup
 
